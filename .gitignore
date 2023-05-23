@@ -3,3 +3,4 @@ venv
 __pycache__
 *.jpg
 db.sqlite3
+static
