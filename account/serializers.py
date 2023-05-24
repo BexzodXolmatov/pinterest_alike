@@ -6,20 +6,11 @@ from django.contrib.auth.password_validation import validate_password
 from account.models import User
 
 
-class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-
-    @classmethod
-    def get_token(cls, user):
-        token = super(CustomTokenObtainPairSerializer, cls).get_token(user)
-
-        # Add custom claims
-        token['email'] = user.email
-        return token
-
-
 class RegisterSerializer(serializers.ModelSerializer):
+    # проверяет что это эмаил
     email = serializers.EmailField(
         required=True,
+        # проверяэт на уникалност эмайла
         validators=[UniqueValidator(queryset=User.objects.all())]
     )
 
