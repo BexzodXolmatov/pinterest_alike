@@ -15,7 +15,7 @@ def avatar_upload_handler(_, filename):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField("email address", unique=True)
+    email = models.EmailField("email address", unique=True, blank=True)
     first_name = models.CharField("first name", max_length=150, blank=True)
     last_name = models.CharField("last name", max_length=150, blank=True)
     profile_image = models.ImageField(upload_to=avatar_upload_handler, blank=True)

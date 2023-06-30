@@ -42,3 +42,27 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+class UserGetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "profile_image",
+            "date_joined",
+        )
+
+
+class UserPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            "id",
+            "email",
+            "first_name",
+            "last_name",
+            "profile_image",
+        )
